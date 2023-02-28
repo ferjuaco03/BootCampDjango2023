@@ -21,10 +21,8 @@ class Product(models.Model):
     category=models.ManyToManyField(Category,through='ProductCategory')
 
     def __str__(self):
-        return f'name:{self.name}-proce:{self.price}-stock:{self.stock}'
+        return f'name:{self.name}-price:{self.price}-stock:{self.stock}'
     
-
-
 class Order(models.Model):
     """ Model to order """
     shippingAdress = models.CharField(max_length=100, null=False)
