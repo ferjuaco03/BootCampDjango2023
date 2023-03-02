@@ -64,7 +64,7 @@ class OrdersSerializerCreateUpdate(serializers.Serializer):
     product=ProductToOrderSerializer(read_only=True, many=True)
     
     def CreateOrder(self,data):
-        products_data=data.pop('products')
+        products_data=data.pop('product')
         print(products_data)
         order=Order.objects.create(**data)
         for product_data in products_data:
@@ -75,7 +75,7 @@ class OrdersSerializerCreateUpdate(serializers.Serializer):
     
     def UpdateOrder(self,data,pk):
         order=Order.objects.get(pk=pk)
-        products_data=data.pop('products')
+        products_data=data.pop('product')
         print(data)
         order.shippingAdress=data['shippingAdress']
         for product_data in products_data:
